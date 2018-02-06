@@ -1,0 +1,382 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title> Titanium Payments </title>
+  <link rel='stylesheet prefetch' href='https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQMdOW5vgaBFqGWcxpTfUVphM5iPiSWxa7I6B9zpm1AOEOw9cve" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body ng-app="myApp">
+<div class="container" ng-controller="myCtrl">
+  <form name="myForm" id="merchantS" class="form" autocomplete="off" method="POST" action="/success">
+
+    <h2 id="userProfile"> User Profile </h2>
+    <div class="section">
+      <div class="form-group">
+        <strong> <label for="name"> Full Name <span class="imp"> * </span> </label> </strong>
+        <div class="relative">
+          <input class="form-control" id="name" name="fullName" type="text" autofocus=""
+                 title="Type your name here. Format: 'First-name Last-name'" autocomplete="off"
+                 placeholder="eg. John Smith" ng-model="fullName" required>
+          <i class="fa fa-user"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="form-group">
+        <strong> <label for="email"> Email address <span class="imp"> * </span> </label> </strong>
+        <div class="relative">
+          <input id="email" name="email" class="form-control" type="email" placeholder="eg. abc@mail.com" name="email"
+                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" ng-model="eMail" required>
+          <i class="fa fa-envelope"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="form-group">
+        <strong> <label for="contact"> Contact Number <span class="imp"> * </span> </label> </strong>
+        <div class="relative">
+          <input id="contact" name="phoneNumber" title="Type your 10-digit mobile number (US)..." type="tel" ng-model="mobile"
+                 class="form-control input-medium bfh-phone" data-format="+1-(ddd)-ddd-dddd"
+                 pattern="[\+]\d{1}[\-][\(]\d{3}[\)][\-]\d{3}[\-]\d{4}" required>
+          <i class="fa fa-phone"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="form-group">
+        <strong> <label for="company"> Company Name <span class="imp"> * </span> </label> </strong>
+        <div class="relative">
+          <input id="company" name="companyName" class="form-control" type="text" title="Type your Company name here"
+                 placeholder="eg. Pied Piper" ng-model="companyName" required>
+          <i class="fa fa-building"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="form-group">
+        <strong> <label for="provider"> Current Provider <span class="imp"> * </span> </label> </strong>
+        <div class="relative">
+          <input class="form-control" type="text" id="provider" name="provider" title="Type your current provider"
+                 placeholder="eg. Titanium Payments" ng-model="currentProvider" required>
+          <i class="fa fa-suitcase"></i>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="form-group">
+        <strong> <label for="zip"> Zip code <span class="imp"> * </span> </label> </strong>
+        <div class="relative">
+          <input id="zip" name="zipCode" class="form-control" type='text' minlength="5" maxlength="5" ng-model='zipcode' name="myInput"
+                 ng-model="myInput" ng-pattern='/^(\d{5}(-\d{4})?|[A-Z]\d[A-Z] *\d[A-Z]\d)$/'
+                 placeholder='eg. 60625' required />
+          <i class="fa fa-map-pin"></i>
+        </div>
+      </div>
+    </div>
+
+    <h2> Business Info. </h2>
+    <div class="section">
+      <strong><label for="Select1"> What type of business do you have? </label></strong>
+      <select class="form-control" ng-model="sel_attr" ng-options="attr for attr in mccCategories"
+              value="{{attr}}" ng-change="Category()" id="Select1" name="businessType" >
+      </select>
+
+      <strong> <label for="mcc"> MCC Code <span class="imp"> * </span> </label> </strong>
+
+      <select class="form-control" name="Mcc" id="mcc"  ng-model="mccCodes" ng-required="mccCodes == ''
+            || mccCodes == undefined">
+        <option></option>
+        <option ng:repeat="mccCode in mccList" value="{{mccCode}}">
+          {{mccCode}}
+        </option>
+      </select>
+      <center> <b style="color: red; font-weight: bolder">
+          <span ng-show="myForm.Mcc.$error.required && myForm.Mcc.$touched"> MCC CODE required </span>
+        </b></center>
+    </div>
+
+    <div class="section">
+      <strong> <label> How do you accept payments? <span class="imp"> * </span> </label> </strong>
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="retail" name="retail"
+                   ng-model="retail" ng-change="toggle()" ng-required="!(retail || commerce || moto
+                               || other)">
+            <label class="custom-control-label" for="retail"> Retail / Swiped </label>
+          </div>
+
+          <div ng-show="retail">
+            <div class="relative per">
+              <input class="ci form-control" id="retailPercent" type="number"
+                     title="" autocomplete="off" max="100"
+                     ng-change="calc(this)" onchange="restrictValue(this)"
+                     placeholder="%" ng-model="retailV" required>
+              <i class="fa fa-percent"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="commerce" name="commerce"
+                   ng-model="commerce" ng-change="toggle()"
+                   ng-required="!(retail || commerce || moto || other)">
+            <label class="custom-control-label" for="commerce"> e-commerce </label>
+          </div>
+          <div ng-show="commerce">
+            <div class="relative per">
+              <input class="ci form-control" id="commercePercent" type="number"
+                     title="" autocomplete="off" max="100"
+                     ng-change="calc()" onchange="restrictValue(this)"
+                     placeholder="%" ng-model="ecomerceV" required>
+              <i class="fa fa-percent"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-sm-6">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="moto" name="moto" ng-model="moto"
+                   ng-change="toggle()" ng-required="!(retail || commerce || moto || other)">
+            <label class="custom-control-label" for="moto"> Phone order / Keyed </label>
+            <!-- Previously called Moto -->
+          </div>
+          <div ng-show="moto">
+            <div class="relative per">
+              <input class="ci form-control" id="motoPercent" type="number"
+                     title="" autocomplete="off" max="100"
+                     ng-change="calc()" onchange="restrictValue(this)"
+                     placeholder="%" ng-model="motoV" required>
+              <i class="fa fa-percent"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-6">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="other" name="other" ng-model="other"
+                   ng-change="toggle()" ng-required="!(retail || commerce || moto || other)">
+            <label class="custom-control-label" for="other"> Other </label>
+          </div>
+          <div ng-show="other">
+            <div class="relative per">
+              <input class="ci form-control" id="otherPercent" type="number"
+                     title="" autocomplete="off" max="100"
+                     ng-change="calc()" onchange="restrictValue(this)"
+                     placeholder="%" ng-model="otherV" required>
+              <i class="fa fa-percent"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+      <br/>
+      <center> <b style="color: red; font-weight: bolder"> {{ errorMsg }} </b> </center>
+
+      <center> <b style="color: red; font-weight: bolder">
+                <span ng-show="!(retail || commerce || moto || other) && (myForm.retail.$touched
+                || myForm.commerce.$touched || myForm.moto.$touched || myForm.other.$touched)">
+                        Payment Method is is required
+                </span> </b>
+      </center>
+
+    </div>
+
+    <div class="section monthly">
+      <strong>
+        <label for="monthlyV">
+          What's your monthly volume? <span class="imp"> * </span>
+        </label>
+      </strong>
+
+      <div class="form-group" id="monthlyV">
+        <div class="row ">
+          <div class="col-sm-6 bottom">
+            <label for="VISA"> VISA </label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" min="0" name="a" ng-model="a" id="VISA"
+                     placeholder="Amount (USD)" ng-change="cor()" ng-required="!(a != undefined || b != undefined
+                                   || c != undefined || d != undefined || e != undefined)">
+            </div>
+          </div>
+
+          <div class="col-sm-6 bottom">
+            <label for="Master"> Master Card </label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" min="0" name="e" ng-model="e" id="Master"
+                     placeholder="Amount (USD)" ng-change="cor()" ng-required="!(a != undefined || b != undefined
+                                   || c != undefined || d != undefined || e != undefined)">
+            </div>
+          </div>
+        </div>
+
+        <div class="row ">
+          <div class="col-sm-6 bottom">
+            <label for="discover"> Discover </label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" min="0" name="b" ng-model="b" id="discover"
+                     placeholder="Amount (USD)" ng-change="cor()" ng-required="!(a != undefined || b != undefined
+                                   || c != undefined || d != undefined || e != undefined)">
+            </div>
+          </div>
+
+          <div class="col-sm-6 bottom">
+            <label for="AMEX"> Amex </label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" min="0" name="c" ng-model="c" id="AMEX"
+                     placeholder="Amount (USD)" ng-change="cor()" ng-required="!(a != undefined || b != undefined
+                            || c != undefined || d != undefined || e != undefined)">
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-sm-6 bottom">
+            <label for="pinDebit"> Pin Debit </label>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" min="0" name="d" ng-model="d" id="pinDebit"
+                     placeholder="Amount (USD)" ng-change="cor()" ng-required="!(a != undefined || b != undefined
+                            || c != undefined || d != undefined || e != undefined)">
+            </div>
+          </div>
+
+          <div class="col-sm-6 bottom">
+            <b> <label for="fee"> Total Volume </label> </b>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">$</span>
+              </div>
+              <input type="number" class="form-control" min="0" value="{{ a + b + c + d + e }}"
+                     id="fee" name="totalVolume" placeholder="Amount (USD)" ng-model="totalV" readonly>
+            </div>
+          </div>
+        </div>
+
+        <center> <b style="color: red; font-weight: bolder">
+                    <span ng-show="(myForm.a.$touched || myForm.b.$touched || myForm.c.$touched || myForm.d.$touched
+                    || myForm.e.$touched) && (myForm.a.$invalid && myForm.b.$invalid && myForm.c.$invalid
+                    && myForm.d.$invalid && myForm.e.$invalid)">
+                            Monthly Volume is required
+                    </span> </b>
+        </center>
+      </div>
+
+      <hr/>
+
+      <div class="row">
+        <div class="col-sm-6 offset-sm-3 bottom">
+          <label for="totalFee"> Total fee </label> <span class="imp"> * </span>
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">$</span>
+            </div>
+            <input type="number" class="form-control" min="0" name="totalFee" ng-model="totalFee" id="totalFee"
+                   placeholder="Amount (USD)" required>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div class="row">
+        <strong style="margin-left: 1em;">
+          <label> What's your Average ticket? <span class="imp"> * </span> </label>
+        </strong>
+      </div>
+
+      <label for="tranxsPm"> Transactions <strong> (per month) </strong> </label>
+
+      <div class="relative">
+        <input type="number" class="form-control allownumericwithoutdecimal" id="tranxsPm" min="0"
+               placeholder="eg. 1500" name="tranXns" ng-model="tranXns" >
+        <i class="fa fa-calculator"></i>
+      </div>
+
+      <br/>
+
+      <p> Or </p>
+
+      <label for="avgTicket"> Average Ticket </label>
+
+      <div class="relative input-group bottom">
+        <input type="number" class="form-control currency" min="0" name="avgTicket" ng-model="avgTicket"
+               id="avgTicket" placeholder="$"
+               >
+        <i class="fa fa-money"></i>
+      </div>
+
+      <center> <b style="color: red; font-weight: bolder"> <span ng-show="(myForm.avgTicket.$touched
+                || myForm.tranXns.$touched) && (tranXns == undefined && avgTicket == undefined)">
+                    Average ticket value is required
+                </span> </b>
+      </center>
+
+    </div>
+    <br/>
+
+    <div class="tright">
+      <a href="#userProfile">
+        <button id="reset" ng-click="resetForm()" type="button" class="btn btn-outline-warning movebtn movebtnre">
+          Reset
+          <i class="fa fa-fw fa-refresh"></i>
+        </button>
+      </a>
+
+      <button type="submit" class="btn btn-outline-primary movebtn movebtnsu">
+        <i class="fa fa-fw fa-paper-plane"></i>
+        Save !
+      </button>
+    </div>
+  </form>
+</div>
+
+<script src='https://code.jquery.com/jquery-1.12.4.js'></script>
+<script src='https://code.jquery.com/ui/1.12.1/jquery-ui.js'></script>
+
+<script>
+
+    $(".allownumericwithoutdecimal").on("keypress keyup blur",function (event) {
+        $(this).val($(this).val().replace(/[^\d].+/, ""));
+        if ((event.which < 48 || event.which > 57)) {
+            event.preventDefault();
+        }
+    });
+
+</script>
+
+<script src="js/bootstrap-formhelpers-phone.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="js/angularjsMain.js" type="text/javascript" rel="script"></script>
+<script src="js/inputRestrict.js" type="text/javascript" rel="script"></script>
+
+</body>
+</html>

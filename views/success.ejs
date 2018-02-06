@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Hi client: this is information what you need! </title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<style>
+    #text1{ text-align:left }
+    #text2{ text-align:center }
+    #head { text-align:center }
+</style>
+
+<body>
+<h1> Hi dear <%=data.fullName%>，<%=title%></h1>
+<div id="text1" class="text1">
+    <p> Hi , <%=data.fullName%>, <br>
+        your effectiveRate is <font size="4" color = "red"><i><strong><U><%=effectiveRate%></U></strong></i></font>, <br>
+        your monrhly volume is <%=totalVolume%>, <br>
+        you work in <%=data.companyName%> company, <br>
+        your averageTicket is <%=avgTicket%>, <br>
+        fee you paid is <%=totalFee%>, <br>
+        your mcc code is <%=data.Mcc%>,<br>
+        <br>
+        <br>
+        <br>
+        the information from the other database is as follows:
+    </p>
+</div>
+
+<div id="text2" class="text2">
+
+    <h1 id="head">Hi <%=data.fullName%>, you know what,</h1>
+
+    <p>
+        Your effectiveRate could be <font size="4" color = "red"><i><strong><U> <%= values %></U></strong></i></font>, <br>
+        your monthly volume is: <%=totalVolume%>, <br>
+        your monthly saving is: <%=monthlySaving%>,<br>
+        your yearly saving is: <font size="5" color = "red"><b> <%=yearlySaving%></b></font>!
+    </p>
+
+</div>
+</body>
+</html>
+
+

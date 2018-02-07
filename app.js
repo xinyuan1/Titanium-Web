@@ -8,7 +8,7 @@ var bodyParser = require('body-parser');
 var routes = require('./routes/index');
 var success =require('./routes/success');//添加的路由器
 var mcc = require('./routes/mcc');
-var test_data=require('./routes/test_data');
+
 
 
 
@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use ('/success', success);
 app.use('/mcc', mcc);
-app.use('/test_data', test_data);
+
 
 
 

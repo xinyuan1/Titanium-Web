@@ -13,19 +13,12 @@ router.get('/index', function(req, res, next) {
           });
 });
 
-
-
-router.get('/users', function(req, res, next) {
-    res.send('respond with a resource');
-});
-
-
-
+//respond the home page: 'success.ejs'
 router.get('/success', function(req, res, next) {
     res.send("Opps, you didn't input your information yet");
 });
 
-
+//respond the home page: 'mcc.ejs'
 router.get('/mcc', function(req, res, next) {
     db3.mcc.find({},{"_id": 0}, function(err, mcc){
         res.json(mcc);
@@ -34,28 +27,12 @@ router.get('/mcc', function(req, res, next) {
 });
 
 
-// router.get('/test_data', function(req, res, next) {
-//     db2.effectiverate.mapReduce(
-//         function() { emit(this.ZIP,1); },
-//         function(key, values) {return Array.sum(values)},
-//         {
-//             query:{MCC:5812},
-//            out:{replace:"count"}
-//         }
-//     )
-//     db4.count.find( function(err, count){
-//         res.json(count);
-//     });
-// });
 
-
-//Save data to database and extract data from different collection of database
 //Save data to database and extract data from different collection of database
 router.post('/success', function(req, res, next){
     var task = req.body;
     var mccD = req.body.Mcc;
     var mcc = parseInt(mccD)
-    console.log(mcc);
     var visaMoney = req.body.a;
     var masterMoney = req.body.e;
     var discoverMoney = req.body.b;
@@ -71,8 +48,10 @@ router.post('/success', function(req, res, next){
 
     //save all data into database
     db.clinfo.save(task, function (err, task) {
-
     });
+
+    //insert effective rate into document of clinfo collection what we just created
+    db.clinfo.update({"email": task.email}, {"$set":{"effectiverate":effectiveRate1}});
 
     //extract effectiverate from the other database
     db2.effectiverate.find({MCC: Number(mcc)}, function(err, effectiverate2){
@@ -103,6 +82,8 @@ router.post('/success', function(req, res, next){
                 out:{replace:"count"}
             }
         )
+
+        //extract data from collection 'count' that just made in MapReduce
         db4.count.find( function(err, count){
 
               console.log(count);
@@ -110,25 +91,22 @@ router.post('/success', function(req, res, next){
         res.render('success', {
             data: task,
             title: 'you submitted your information successfully',
+            mccD: mccD,
             effectiveRate: effectiveRate1,
             totalVolume: volume,
             avgTicket: avgTicket,
             totalFee: totalFee,
-            // values: JSON.stringify(buinfo)
-            // values: effectiverate2
+           // values: JSON.stringify(buinfo)
+           // values: effectiverate2
             values: averageER,
             monthlySaving: different,
             yearlySaving: yearSaving,
             count1: JSON.stringify(count)
             //count1: count
         });
-        });
+       });
     });
 });
-
-
-
-
 
 
 

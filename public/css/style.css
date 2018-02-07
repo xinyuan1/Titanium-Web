@@ -1,137 +1,31 @@
-@import url('https://fonts.googleapis.com/css?family=Orbitron|Permanent+Marker');
-@import url('https://fonts.googleapis.com/css?family=Tinos');
-@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two');
-@import url('https://fonts.googleapis.com/css?family=PT+Serif');
-
 @import url('https://fonts.googleapis.com/css?family=Varela+Round');
 @import url('https://fonts.googleapis.com/css?family=Montserrat');
 @import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
 
-html{
-    height: 100%;
-}
+/* Fonts of placeholder text */
 
-form select, form div.section {
-    margin-bottom: 1rem;
-}
-
-form div.bottom {
-    margin-bottom: 0.7rem;
-}
-
-#space {
-    height: 2.5px;
-}
-
-body {
-    background-color: black !important;
-    font-size: 1.1rem;
-}
-
-form label {
+.form div input::placeholder {
+    color: darkgray;
     font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
 }
 
-form input, form select {
-    font-family: 'Quicksand', sans-serif;
-    font-weight: 800;
-}
+/* Class selector */
 
-#fee {
-    background-color: #ddd;
-}
-
-.form {
-    max-width: calc(100vw - 40px);
-    height: auto;
-    background: rgba(255, 255, 255, 1);
-    border-radius: 8px;
-    box-shadow: 0 0 40px -10px #fff;
-    margin: 0 auto;
-    padding: 20px 30px;
-    box-sizing: border-box;
-    position: relative;
-    border-bottom: 5px solid #ccc;
-}
-form:before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 8px;
-    background: #c4e17f;
-    border-radius: 5px 5px 0 0  ;
-    background: rgba(196,225,127,1);
-    background: -moz-linear-gradient(left, rgba(196,225,127,1) 0%, rgba(196,225,127,1) 20%, rgba(247,253,202,1) 20%, rgba(247,253,202,1) 40%, rgba(254,207,113,1) 40%, rgba(254,207,113,1) 60%, rgba(240,119,108,1) 60%, rgba(240,119,108,1) 80%, rgba(219,157,190,1) 80%, rgba(219,157,190,1) 100%);
-    background: -webkit-gradient(left top, right top, color-stop(0%, rgba(196,225,127,1)), color-stop(20%, rgba(196,225,127,1)), color-stop(20%, rgba(247,253,202,1)), color-stop(40%, rgba(247,253,202,1)), color-stop(40%, rgba(254,207,113,1)), color-stop(60%, rgba(254,207,113,1)), color-stop(60%, rgba(240,119,108,1)), color-stop(80%, rgba(240,119,108,1)), color-stop(80%, rgba(219,157,190,1)), color-stop(100%, rgba(219,157,190,1)));
-    background: -webkit-linear-gradient(left, rgba(196,225,127,1) 0%, rgba(196,225,127,1) 20%, rgba(247,253,202,1) 20%, rgba(247,253,202,1) 40%, rgba(254,207,113,1) 40%, rgba(254,207,113,1) 60%, rgba(240,119,108,1) 60%, rgba(240,119,108,1) 80%, rgba(219,157,190,1) 80%, rgba(219,157,190,1) 100%);
-    background: -o-linear-gradient(left, rgba(196,225,127,1) 0%, rgba(196,225,127,1) 20%, rgba(247,253,202,1) 20%, rgba(247,253,202,1) 40%, rgba(254,207,113,1) 40%, rgba(254,207,113,1) 60%, rgba(240,119,108,1) 60%, rgba(240,119,108,1) 80%, rgba(219,157,190,1) 80%, rgba(219,157,190,1) 100%);
-    background: -ms-linear-gradient(left, rgba(196,225,127,1) 0%, rgba(196,225,127,1) 20%, rgba(247,253,202,1) 20%, rgba(247,253,202,1) 40%, rgba(254,207,113,1) 40%, rgba(254,207,113,1) 60%, rgba(240,119,108,1) 60%, rgba(240,119,108,1) 80%, rgba(219,157,190,1) 80%, rgba(219,157,190,1) 100%);
-    background: linear-gradient(to right, rgba(196,225,127,1) 0%, rgba(196,225,127,1) 20%, rgba(247,253,202,1) 20%, rgba(247,253,202,1) 40%, rgba(254,207,113,1) 40%, rgba(254,207,113,1) 60%, rgba(240,119,108,1) 60%, rgba(240,119,108,1) 80%, rgba(219,157,190,1) 80%, rgba(219,157,190,1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c4e17f', endColorstr='#db9dbe', GradientType=1 );
-}
-.form h2 {
-    margin: 18px 0;
-    padding-bottom: 10px;
-    width: 210px;
-    color: #4B0082	;
-    font-size: 22px;
-    border-bottom: 3px solid #a7adba;
-    font-weight: 600;
-    margin-bottom: 30px;
-    font-family: 'Varela Round', sans-serif;
-}
-input {
-    width: 60%;
-    padding: 10px;
-    box-sizing: border-box;
-    background: none;
-    outline: none;
-    resize: none;
-    border: 0;
-    font-family: 'Montserrat', sans-serif;
-    border: 2px solid #bebed2;
-    transition: all .3s;
-}
-.form p:before {
-    content: attr(type);
-    display: block;
-    margin: 10px 0 0;
-    font-size: 13px;
-    color: #5a5a5a;
-    float: left;
-    width: 40%;
-    transition: all .3s;
-}
-button {
-    padding: 8px 12px;
-    margin: 8px 0 0;
-    font-family: 'Montserrat', sans-serif;
-    border: 2px solid #78788c;
-    background: 0;
-    color: #5a5a6e;
-    cursor: pointer;
-    transition: all .3s;
-    font-size: 4rem;
-    width: 110px;
-    height: 60px
+.jumbotron {
+    max-height: 500px;
+    background-color: rgba(233, 240, 252, 1)
 }
 
 .tright{
     text-align: right;
 }
-.ui-menu{
-    max-height: 150px;
-    overflow: auto;
-}
-.ui-menu .ui-menu-item{
-    padding:5px;
-    font-size: 14px;
-}
+
 .relative{
     position: relative;
 }
+
 .relative i.fa:before{
     color: #444;
     padding: 10px;
@@ -154,7 +48,6 @@ button {
     border-right: 30px solid #ccc;
     border-bottom: 34px solid #ccc;
     transition: all 0.15s ease-in-out;
-
 }
 .form-control:focus{
     border-color: #1e439b;
@@ -167,36 +60,6 @@ button {
 }
 .relative input:focus + i.fa:before{
     color: #fff;
-}
-.input-group .form-control:not(:first-child):not(:last-child),
-.input-group-addon:not(:first-child):not(:last-child),
-.input-group-btn:not(:first-child):not(:last-child){
-    border-radius: 0 4px 4px 0;
-}
-.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control{
-    background-color: #fff;
-}
-
-/* --- Thanks Message Popup --- */
-.thanks{
-    max-width: calc(100vw - 40px);
-    width: 200px;
-    height: auto;
-    background-color: #444;
-    border-radius: 8px;
-    box-shadow: 0 0 40px -10px #000;
-    padding: 20px;
-    box-sizing: border-box;
-    position: relative;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    transition: all .3s;
-}
-.thanks h4,
-.thanks p{
-    color: #fff;
-    text-align: center;
 }
 
 .movebtnre {
@@ -220,65 +83,50 @@ button {
     color:#fff;
 }
 
-::-webkit-input-placeholder  { /* Chrome/Opera/Safari */
+.form {
+    max-width: calc(100vw - 40px);
+    height: auto;
+    background: rgba(233, 240, 252, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 0 40px -10px dodgerblue;
+    margin: 0 auto;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    position: relative;
+    border-bottom: 5px solid #ccc;
+}
+
+/* Element selector */
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #fff !important;
+    font-size: 1.1rem;
+}
+
+input {
+    width: 60%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: none;
+    outline: none;
+    resize: none;
+    border: 0;
     font-family: 'Montserrat', sans-serif;
-    font-weight: lighter;
-    color: #5a5a6e;
-}
-::-moz-placeholder { /* Firefox 19+ */
-    font-family: 'Montserrat', sans-serif;
-    font-weight: lighter;
-    color: #5a5a6e;
-}
-:-ms-input-placeholder { /* IE 10+ */
-    font-family: 'Montserrat', sans-serif;
-    font-weight: lighter;
-    color: #5a5a6e;
-}
-:-moz-placeholder { /* Firefox 18- */
-    font-family: 'Montserrat', sans-serif;
-    font-weight: lighter;
-    color: #5a5a6e;
+    border: 2px solid #bebed2;
+    transition: all .3s;
 }
 
-/* --- Media Queries --- */
-
-@media only screen and (max-width: 600px) {
-    p:before{
-        content: attr(type);
-        width: 100%
-    }
-    input{
-        width: 100%;
-    }
+a, a:hover {
+    text-decoration: none;
 }
 
-@media only screen and (min-width: 1000px) {
-    .form {
-        width: 70%;
-    }
-
-    form div.per {
-        width: 45%;
-    }
-}
-
-@media only screen and (min-width: 451px) and (max-width: 999px) {
-
-    form div.per {
-        width: 60%;
-    }
-}
-
-
-@media only screen and (max-width: 450px) {
-    .form {
-        width: 99%;
-    }
-
-    form div.per {
-        width: 85%;
-    }
+.errorMSg {
+    color: red;
+    font-weight: bolder;
 }
 
 form br {
@@ -286,7 +134,137 @@ form br {
     margin: 2px 0;
 }
 
-span.imp {
-    color: red;
-    font-weight: bolder;
+.ng-show {
+    animation: 0.5s myChange;
 }
+
+form select, form div.section {
+    margin-bottom: 1rem;
+}
+
+
+form div.bottom {
+    margin-bottom: 0.7rem;
+}
+
+form label, .header, div p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+form input, form select {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+}
+
+form:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    border-radius: 2px;
+}
+
+h2 {
+    font-family: 'Varela Round', sans-serif;
+}
+
+footer {
+    background: #2d2b2a;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: .8rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+footer ul li {
+    display: inline-block;
+}
+footer ul li a {
+    display: block;
+    padding: .4rem .7rem;
+    font-size: .9rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.7);
+}
+footer ul li a:hover {
+    color: white;
+}
+
+.form h2  {
+    margin: 18px 0;
+    padding-bottom: 10px;
+    width: 210px;
+    color: royalblue;
+    font-size: 22px;
+    border-bottom: 3px solid #a7adba;
+    font-weight: 600;
+    margin-bottom: 30px;
+    font-family: 'Cinzel', serif;
+}
+
+.form p:before {
+    content: attr(type);
+    display: block;
+    margin: 10px 0 0;
+    font-size: 13px;
+    color: #5a5a5a;
+    float: left;
+    width: 40%;
+    transition: all .3s;
+}
+
+button {
+    padding: 8px 12px;
+    margin: 8px 0 0;
+    font-family: 'Montserrat', sans-serif;
+    border: 2px solid #78788c;
+    background: 0;
+    color: #5a5a6e;
+    cursor: pointer;
+    transition: all .3s;
+    font-size: 4rem;
+    width: 110px;
+    height: 60px
+}
+
+/* --- Media Queries --- */
+
+@media only screen and (min-width: 1000px) {
+
+    .form {
+        width: 70%;
+    }
+
+    form div.per {
+        width: 45%;
+    }
+
+}
+
+@media only screen and (min-width: 451px) and (max-width: 999px) {
+
+    form div.per {
+        width: 60%;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    .form {
+        width: 99%;
+    }
+
+    form div.per {
+        width: 85%;
+    }
+
+}
+

@@ -93,7 +93,7 @@ var db3 = mongojs('mongodb://zhiguo:zhiguowang1207@ds137230.mlab.com:37230/mytas
 //             totalVolume: volume,
 //             avgTicket: avgTicket,
 //             totalFee: totalFee,
-//             // values: JSON.stringify(buinfo)
+//             // values: <%=count1['value']%>(buinfo)
 //             // values: effectiverate2
 //             values: averageER,
 //             monthlySaving: different,

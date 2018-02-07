@@ -1,4 +1,4 @@
-var app = angular.module('myApp', []);
+var app = angular.module('myApp', ['ngAnimate']);
 app.controller('myCtrl', function($scope, $http) {
     $http.get("http://localhost:3000/mcc")
     .then(function(response) {
@@ -46,11 +46,15 @@ app.controller('myCtrl', function($scope, $http) {
 
     $scope.calc = function(p) {
         const total = ($scope.retailV || 0) + ($scope.ecomerceV || 0) + ($scope.motoV || 0) + ($scope.otherV || 0);
+
         if(total > 100) {
             $scope.errorMsg = `Total percentage is ${total} which should not be greater than 100`;
+            //form.$setValidity('charE', true);
+
         }
         else if(total < 100) {
             $scope.errorMsg = `Total percentage is ${total} which should be equal to 100`;
+            $scope.myForm.retail.$valid = false;
         }
         else {
             reset();
@@ -62,18 +66,18 @@ app.controller('myCtrl', function($scope, $http) {
     }
 
     $scope.divisionOp1 = function () {
-        $scope.avgTicket = ((parseInt($scope.a) || 0) + (parseInt($scope.b) || 0) + (parseInt($scope.c) || 0)
-            + (parseInt($scope.d) || 0) + (parseInt($scope.e) || 0)) / parseInt($scope.tranXns);
+        $scope.avgTicket = parseFloat(parseFloat(((parseInt($scope.totalV) || 0)
+            / parseInt($scope.tranXns)).toString()).toFixed(2));
     }
 
     $scope.divisionOp2 = function () {
-        $scope.tranXns = ((parseInt($scope.a) || 0) + (parseInt($scope.b) || 0) + (parseInt($scope.c) || 0)
-            + (parseInt($scope.d) || 0) + (parseInt($scope.e) || 0)) / parseInt($scope.avgTicket);
+        $scope.tranXns = parseFloat(parseFloat(((parseInt($scope.totalV) || 0)
+            / parseInt($scope.avgTicket)).toString()).toFixed(0));
     }
 
     $scope.cor = () => {
-        $scope.avgTicket = ((parseInt($scope.a) || 0) + (parseInt($scope.b) || 0) + (parseInt($scope.c) || 0)
-            + (parseInt($scope.d) || 0) + (parseInt($scope.e) || 0)) / parseInt($scope.tranXns);
+        $scope.avgTicket = parseFloat(parseFloat(((parseInt($scope.totalV) || 0)
+            / parseInt($scope.tranXns)).toString()).toFixed(2));
     }
 
     $scope.toggle = function () {
@@ -99,13 +103,13 @@ app.controller('myCtrl', function($scope, $http) {
             reset();
         }
     }
-    
+
     $scope.resetForm = function () {
         $scope.fullName = undefined;
         $scope.mobile = "";
         $scope.companyName = undefined;
         $scope.currentProvider = undefined;
-        $scope.zipcode = undefined; // zip
+        $scope.zipcode = undefined;
         $scope.eMail = "";
 
         $scope.sel_attr = "";
@@ -117,11 +121,9 @@ app.controller('myCtrl', function($scope, $http) {
         $scope.motoV = 0;
         $scope.otherV = 0;
 
-        $scope.a = undefined;
-        $scope.b = undefined;
-        $scope.c = undefined;
-        $scope.d = undefined;
-        $scope.e = undefined;
+        $scope.totalV = undefined;
+        $scope.totalFee = undefined;
+
         $scope.avgTicket = undefined;
         $scope.tranXns = undefined;
 
@@ -142,11 +144,9 @@ app.controller('myCtrl', function($scope, $http) {
         $scope.myForm.moto.$setUntouched();
         $scope.myForm.other.$setUntouched();
 
-        $scope.myForm.a.$setUntouched();
-        $scope.myForm.b.$setUntouched();
-        $scope.myForm.c.$setUntouched();
-        $scope.myForm.d.$setUntouched();
-        $scope.myForm.e.$setUntouched();
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
     }
 
 });
+
+

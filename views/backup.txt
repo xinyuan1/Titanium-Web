@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+
+    <meta charset="utf-8">
+    <title> Dashboard </title>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto|Raleway:600,400,200' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="styles/examples.css">
+    <link rel="stylesheet" href="Library/styles/vizuly.css">
+
+    <!-- Test Index Files -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="Library/styles/cssmenu.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="Library/cssmenu.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- D3.js ... of course! -->
+    <script src="lib/d3.min.js"></script>
+
+    <script src="lib/vizuly_core.min.js"></script>
+    <script src="lib/vizuly_column.min.js"></script>
+
+    <script src="column_test.js"></script>
+    <script>
+        //Once the document is ready we set javascript and page settings
+        var screenWidth;
+        var screenHeight;
+
+        $(document).ready(function () {
+
+            var rect;
+            if (self==top) {
+                rect = document.body.getBoundingClientRect();
+            }
+            else {
+                rect =  parent.document.body.getBoundingClientRect();
+            }
+
+            //Set display size based on window size.
+            screenWidth = (rect.width < 960) ? Math.round(rect.width*.95) : Math.round((rect.width - 210) *.95);
+            screenHeight = 560;
+
+            d3.select("#currentDisplay")
+                .attr("item_value", (String(screenWidth) + "," + String(screenHeight)))
+                .attr("class", "selected")
+                .html("<a>" + screenWidth + "px - " + screenHeight + "px</a>");
+
+            $("#cssmenu").menumaker({
+                title: "ClearCost",
+                format: "multitoggle"
+            });
+
+
+            // Set the size of our container element.
+            viz_container = d3.selectAll("#viz_container")
+                .style("width", screenWidth + "px")
+                .style("height", screenHeight + "px");
+
+            loadData();
+        });
+
+    </script>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat');
+        @import url('https://fonts.googleapis.com/css?family=Quicksand');
+
+        h1 {
+            font-family: Quicksand !important;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin-top: 4rem;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div id='cssmenu'>
+    <ul class="main-menu">
+        <li class='active'>
+            <a><span>Display</span><br><span class="setting"></span></a>
+            <ul class="options" callback="changeSize">
+                <li id="currentDisplay" class="selected"><a></a></li>
+                <li item_value="1000,1000"><a>1000px - 1000px</a></li>
+                <li item_value="800,600"><a>800px - 600px</a></li>
+                <li item_value="375,600"><a>375px - 600px</a></li>
+                <li item_value="360,520"><a>360px - 520px</a></li>
+            </ul>
+        </li>
+        <li class='active'><a><span>Theme </span><br><span class="setting"></span></a>
+            <ul class="options" callback="changeSkin">
+                <li item_value="MaterialBlue" class="selected"><a>Material Blue</a></li>
+                <li item_value="MaterialPink"><a>Material Pink</a></li>
+                <li item_value="Neon"><a>Neon</a></li>
+                <li item_value="Axiis"><a>Axiis</a></li>
+                <li item_value="Minimal"><a>Minimal</a></li>
+            </ul>
+        </li>
+
+        <li class='active'><a><span>Zoom </span><br><span class="setting" id="zoomLabel"></span></a>
+            <ul class="options" callback="changeZoom">
+                <li item_value="1" class="selected"><a>1x</a></li>
+                <li item_value="2"><a>2x</a></li>
+                <li item_value="3"><a>3x</a></li>
+                <li item_value="4"><a>4x</a></li>
+                <li item_value="5"><a>5x</a></li>
+                <li item_value="6"><a>6x</a></li>
+                <li item_value="7"><a>7x</a></li>
+                <li item_value="8"><a>8x</a></li>
+                <li item_value="9"><a>9x</a></li>
+                <li item_value="10"><a>10x</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+
+<div class="container" style="width:100%">
+    <div id="viz_container" class="theme_default z-depth-3"></div>
+
+    <h1 class="text-center"> ClearCost </h1>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4" style="text-align: center; ">
+                <p> <%=data.fullName%>, thank you for using ClearCost </p>
+                <ul style="list-style-type: none">
+                    <li> Your effective rate is <strong><U><%=effectiveRate%></U></strong> </li>
+                    <li> Monthly volume: <%=totalVolume%> </li>
+                    <li> Average ticket: <%=avgTicket%> </li>
+                    <li> Fee paid: <%=totalFee%> </li>
+                </ul>
+                <p>
+                    Let us sit down together and see how we can save you money and offer a better service
+                    to suit your business.
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <p style="margin-top: 3rem; text-align: right"> your business is: <%=mccD%></p>
+                <p style="border-style: solid; margin-top: 1rem; text-align: center">
+                    <strong>
+                        Companies using Titanium average a <%= values %> effective rate
+                    </strong>
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <ul style="text-align: center; list-style-type: none">
+                    <li> Your effective rate could be <strong><U><%= values %></U></strong> </li>
+                    <li> Monthly volume: <%=totalVolume%> </li>
+                    <li> Monthly savings: <b> <%=monthlySaving%> </b> </li>
+                    <li> Yearly savings: <b> <%=yearlySaving%> </b> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+    <%=count1%>
+</div>
+
+
+</body>
+
+
+</html>

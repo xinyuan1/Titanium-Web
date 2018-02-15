@@ -1,0 +1,260 @@
+@import url(https://fonts.googleapis.com/css?family=Montserrat);
+@import url(https://fonts.googleapis.com/css?family=Encode+Sans+Expanded);
+
+.header,
+div p,
+form input,
+form label,
+form select,
+input, .form h2 {
+    font-family: Montserrat, sans-serif;
+}
+
+.form div input::placeholder {
+    color: #a9a9a9;
+    font-family: Montserrat, sans-serif;
+    font-weight: lighter
+}
+
+.jumbotron {
+    max-height: 500px;
+    background-color: rgba(233, 240, 252, 1)
+}
+
+.tright {
+    text-align: right
+}
+
+.relative {
+    position: relative
+}
+
+.relative i.fa:before {
+    color: #444;
+    padding: 10px;
+    position: absolute;
+    left: -3px;
+    text-align: center
+}
+
+.relative i.fa {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: center;
+    border-radius: 0 4px 4px 0;
+    width: 0;
+    height: 0;
+    z-index: 99;
+    border-left: 20px solid transparent;
+    border-right: 30px solid #ccc;
+    border-bottom: 34px solid #ccc;
+    transition: all .15s ease-in-out
+}
+
+.form p:before,
+button,
+input {
+    transition: all .3s
+}
+
+.form-control:focus {
+    border-color: #1e439b;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px #1e66c3
+}
+
+.relative input:focus+i.fa {
+    border-left: 20px solid transparent;
+    border-right: 30px solid #1e439b;
+    border-bottom: 34px solid #1e439b
+}
+
+.relative input:focus+i.fa:before {
+    color: #fff
+}
+
+.movebtnre {
+    border: 2px solid #ff5501;
+    box-shadow: inset 0 0 0 0 #ff5501;
+    color: #ff5501
+}
+
+.movebtnsu {
+    border: 2px solid #1e439b;
+    box-shadow: inset 0 0 0 0 #1e439b;
+    color: #1e439b
+}
+
+.movebtnre:hover {
+    background-color: #ff5501;
+    color: #fff
+}
+
+.movebtnsu:hover {
+    background-color: #1e439b;
+    color: #fff
+}
+
+.form {
+    max-width: calc(100vw - 40px);
+    height: auto;
+    background: rgba(233, 240, 252, .4);
+    border-radius: 8px;
+    box-shadow: 0 0 40px -10px #1e90ff;
+    margin: 0 auto;
+    padding: 20px 30px;
+    box-sizing: border-box;
+    position: relative;
+    border-bottom: 5px solid #ccc
+}
+
+html {
+    height: 100%
+}
+
+body {
+    background-color: #fff!important;
+    font-size: 1.1rem
+}
+
+input {
+    width: 60%;
+    padding: 10px;
+    box-sizing: border-box;
+    background: 0 0;
+    outline: 0;
+    resize: none;
+    border: 2px solid #bebed2
+}
+
+a,
+a:hover {
+    text-decoration: none
+}
+
+.errorMSg {
+    color: red;
+    font-weight: bolder
+}
+
+footer,
+footer ul li a:hover {
+    color: #fff
+}
+
+form br {
+    display: block;
+    margin: 2px 0
+}
+
+.ng-show {
+    animation: .5s myChange
+}
+
+form div.section,
+form select {
+    margin-bottom: 1rem
+}
+
+form div.bottom {
+    margin-bottom: .7rem
+}
+
+form input,
+form select {
+    font-weight: 800
+}
+
+form:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 8px;
+    border-radius: 2px
+}
+
+
+footer {
+    background: #2d2b2a;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: .8rem;
+    color: rgba(255, 255, 255, .4)
+}
+
+footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none
+}
+
+footer ul li {
+    display: inline-block
+}
+
+footer ul li a {
+    display: block;
+    padding: .4rem .7rem;
+    font-size: .9rem;
+    text-decoration: none;
+    color: rgba(255, 255, 255, .7)
+}
+
+.form h2 {
+    margin: 18px 0 30px;
+    padding-bottom: 10px;
+    width: 210px;
+    color: #4169e1;
+    font-size: 22px;
+    border-bottom: 3px solid #a7adba;
+    font-weight: 600;
+}
+
+.form p:before {
+    content: attr(type);
+    display: block;
+    margin: 10px 0 0;
+    font-size: 13px;
+    color: #5a5a5a;
+    float: left;
+    width: 40%
+}
+
+button {
+    padding: 8px 12px;
+    margin: 8px 0 0;
+    font-family: 'Encode Sans Expanded', sans-serif;
+    border: 2px solid #78788c;
+    background: 0;
+    color: #5a5a6e;
+    cursor: pointer;
+    font-size: 4rem;
+    width: 130px;
+    height: 60px
+}
+
+@media only screen and (min-width:1000px) {
+    .form {
+        width: 70%
+    }
+    form div.per {
+        width: 45%
+    }
+}
+
+@media only screen and (min-width:451px) and (max-width:999px) {
+    form div.per {
+        width: 60%
+    }
+}
+
+@media only screen and (max-width:450px) {
+    .form {
+        width: 99%
+    }
+    form div.per {
+        width: 85%
+    }
+}

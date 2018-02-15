@@ -1,0 +1,139 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> Dashboard </title>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto|Raleway:600,400,200' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="styles/examples.css">
+    <link rel="stylesheet" href="Library/styles/vizuly.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="Library/styles/cssmenu.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+
+        @import url(https://fonts.googleapis.com/css?family=Montserrat);
+
+        .second{
+            font-size: 1.2rem;
+            background-color: rgba(233, 240, 252, 1);
+        }
+
+        * {
+            font-family: Montserrat, sans-serif !important;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<h1 class="text-center" style="background-color: rgba(233, 240, 252, 1); padding: 1.2rem"> Thank you for using ClearCost </h1>
+
+<!-- <h1 class="text-center"> ClearCost for <%=mccD%> </h1> -->
+
+<div id="para" class="first" style="width:100%">
+    <div id="viz_container" class="theme_default z-depth-3"></div>
+</div>
+
+<br/>
+
+<div class="second">
+
+    <div class="container-fluid" style="width:100%">
+        <br>
+        <div class="row">
+            <div class="col-sm-4" style="text-align: center; ">
+                <ul style="list-style-type: none">
+                    <li> <%=data.fullName%>, your effective rate is <b style="color: #FF0000"> <%=effectiveRate%> </b> </li>
+                    <li>( <%=totalFee%> (in Fee) / <%=totalVolume%> (in Volume) )</li>
+                </ul>
+            </div>
+            <div class="col-sm-4">
+                <p style="border-style: solid; text-align: center">
+                    <strong>
+                        Companies using Titanium average a <%= values %> effective rate
+                    </strong>
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <div style="border-style: solid; text-align: center">
+                    <span style="text-align: center;">
+                        <p> Your effective rate could be <b style="color: #007F00"><U><%= values %></U></b> </p>
+                        <p> Monthly savings: <b>$</b> <b style="color: #007F00"> <%=monthlySaving%> </b> </p>
+                        <p> Yearly savings: <b>$</b><b style="color: #007F00"> <%=yearlySaving%> </b> </p>
+                        <p> 3 year saving will be <b>$</b><b style="color: #007F00"> <%=threeYearSaving%> </b> </p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <br/>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script>
+
+
+    //Once the document is ready we set javascript and page settings
+    var screenWidth;
+    var screenHeight;
+
+    $(document).ready(function () {
+
+        var rect;
+        if (self==top) {
+            rect = document.body.getBoundingClientRect();
+        }
+        else {
+            rect =  parent.document.body.getBoundingClientRect();
+        }
+
+        //Set display size based on window size.
+        console.log(`Width ${rect.width}`);
+
+        screenWidth = (rect.width < 960) ? Math.round(rect.width*.92) : Math.round((rect.width - 210) *.92);
+        screenHeight = $(window).height()*0.80+2;
+
+        d3.select("#currentDisplay")
+            .attr("item_value", (String(screenWidth) + "," + String(screenHeight)))
+            .attr("class", "selected")
+            .html("<a>" + screenWidth + "px - " + screenHeight + "px</a>");
+
+        // d3.select(".second").style("position", "relative").style("top", screenHeight+2+"px");
+
+        $("#cssmenu").menumaker({
+            title: "ClearCost",
+            format: "multitoggle"
+        });
+
+
+        // Set the size of our container element.
+        viz_container = d3.selectAll("#viz_container")
+            .style("width", screenWidth + "px")
+            .style("height", screenHeight + "px");
+
+        loadData();
+    });
+
+</script>
+
+<script src="lib/d3.min.js"></script>
+<script src="lib/vizuly_core.min.js"></script>
+<script src="lib/vizuly_column.min.js"></script>
+<script src="column_test.js"></script>
+<script src="Library/cssmenu.js"></script>
+
+</body>
+</html>

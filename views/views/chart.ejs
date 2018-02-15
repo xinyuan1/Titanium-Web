@@ -1,0 +1,90 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title> Dashboard </title>
+
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto|Raleway:600,400,200' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="styles/examples.css">
+    <link rel="stylesheet" href="Library/styles/vizuly.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="Library/styles/cssmenu.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <style>
+
+        .second{
+            position: relative;
+        }
+
+    </style>
+</head>
+
+<body>
+
+<center>
+    <div id="para" class="container first" style="width:100%">
+        <div id="viz_container" class="theme_default z-depth-3"></div>
+    </div>
+</center>
+
+<br/>
+
+<div class="second">
+    <h1 class="text-center"> ClearCost for <%=mccD%> </h1>
+
+    <div class="container-fluid" style="width:100%">
+        <div style="margin-bottom: 10rem">&nbsp</div>
+        <div class="row">
+            <div class="col-sm-4" style="text-align: center; ">
+                <p> <%=data.fullName%>, thank you for using ClearCost </p>
+                <ul style="list-style-type: none">
+                    <li> Your effective rate is <strong><U><%=effectiveRate%></U></strong> </li>
+                    <li> Monthly volume: <%=totalVolume%> </li>
+                    <li> Average ticket: <%=avgTicket%> </li>
+                    <li> Fee paid: <%=totalFee%> </li>
+                </ul>
+                <p>
+                    Let us sit down together and see how we can save you money and offer a better service
+                    to suit your business.
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <p style="border-style: solid; margin-top: 1rem; text-align: center">
+                    <strong>
+                        Companies using Titanium average a <%= values %> effective rate
+                    </strong>
+                </p>
+            </div>
+            <div class="col-sm-4">
+                <ul style="text-align: center; list-style-type: none">
+                    <li> Your effective rate could be <strong><U><%= values %></U></strong> </li>
+                    <li> Monthly volume: <%=totalVolume%> </li>
+                    <li> Monthly savings: <b> <%=monthlySaving%> </b> </li>
+                    <li> Yearly savings: <b> <%=yearlySaving%> </b> </li>
+                    <li> 3 year saving will be: <b> <%=threeYearSaving%> </b> </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+<script src="lib/d3.min.js"></script>
+<script src="lib/vizuly_core.min.js"></script>
+<script src="lib/vizuly_column.min.js"></script>
+<script src="column_test.js"></script>
+<script src="Library/cssmenu.js"></script>
+
+</body>
+</html>

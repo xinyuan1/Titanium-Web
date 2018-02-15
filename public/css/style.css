@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 @import url(https://fonts.googleapis.com/css?family=Encode+Sans+Expanded);
 
@@ -16,11 +17,29 @@ input, .form h2 {
     font-weight: lighter
 }
 
+=======
+@import url('https://fonts.googleapis.com/css?family=Varela+Round');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url('https://fonts.googleapis.com/css?family=Quicksand');
+@import url('https://fonts.googleapis.com/css?family=Cinzel');
+
+/* Fonts of placeholder text */
+
+.form div input::placeholder {
+    color: darkgray;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: lighter;
+}
+
+/* Class selector */
+
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 .jumbotron {
     max-height: 500px;
     background-color: rgba(233, 240, 252, 1)
 }
 
+<<<<<<< HEAD
 .tright {
     text-align: right
 }
@@ -30,10 +49,22 @@ input, .form h2 {
 }
 
 .relative i.fa:before {
+=======
+.tright{
+    text-align: right;
+}
+
+.relative{
+    position: relative;
+}
+
+.relative i.fa:before{
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
     color: #444;
     padding: 10px;
     position: absolute;
     left: -3px;
+<<<<<<< HEAD
     text-align: center
 }
 
@@ -41,6 +72,16 @@ input, .form h2 {
     position: absolute;
     top: 0;
     right: 0;
+=======
+    text-align: center;
+}
+
+.relative i.fa{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
     text-align: center;
     border-radius: 0 4px 4px 0;
     width: 0;
@@ -49,6 +90,7 @@ input, .form h2 {
     border-left: 20px solid transparent;
     border-right: 30px solid #ccc;
     border-bottom: 34px solid #ccc;
+<<<<<<< HEAD
     transition: all .15s ease-in-out
 }
 
@@ -71,11 +113,27 @@ input {
 
 .relative input:focus+i.fa:before {
     color: #fff
+=======
+    transition: all 0.15s ease-in-out;
+}
+.form-control:focus{
+    border-color: #1e439b;
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgb(30, 102, 195);
+}
+.relative input:focus + i.fa{
+    border-left: 20px solid transparent;
+    border-right: 30px solid #1e439b;
+    border-bottom: 34px solid #1e439b;
+}
+.relative input:focus + i.fa:before{
+    color: #fff;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 }
 
 .movebtnre {
     border: 2px solid #ff5501;
     box-shadow: inset 0 0 0 0 #ff5501;
+<<<<<<< HEAD
     color: #ff5501
 }
 
@@ -83,28 +141,51 @@ input {
     border: 2px solid #1e439b;
     box-shadow: inset 0 0 0 0 #1e439b;
     color: #1e439b
+=======
+    color:#ff5501;
+}
+.movebtnsu {
+    border: 2px solid #1e439b;
+    box-shadow: inset 0 0 0 0 #1e439b;
+    color: #1e439b;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 }
 
 .movebtnre:hover {
     background-color: #ff5501;
+<<<<<<< HEAD
     color: #fff
+=======
+    color:#fff;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 }
 
 .movebtnsu:hover {
     background-color: #1e439b;
+<<<<<<< HEAD
     color: #fff
+=======
+    color:#fff;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 }
 
 .form {
     max-width: calc(100vw - 40px);
     height: auto;
+<<<<<<< HEAD
     background: rgba(233, 240, 252, .4);
     border-radius: 8px;
     box-shadow: 0 0 40px -10px #1e90ff;
+=======
+    background: rgba(233, 240, 252, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 0 40px -10px dodgerblue;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
     margin: 0 auto;
     padding: 20px 30px;
     box-sizing: border-box;
     position: relative;
+<<<<<<< HEAD
     border-bottom: 5px solid #ccc
 }
 
@@ -115,12 +196,27 @@ html {
 body {
     background-color: #fff!important;
     font-size: 1.1rem
+=======
+    border-bottom: 5px solid #ccc;
+}
+
+/* Element selector */
+
+html {
+    height: 100%;
+}
+
+body {
+    background-color: #fff !important;
+    font-size: 1.1rem;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 }
 
 input {
     width: 60%;
     padding: 10px;
     box-sizing: border-box;
+<<<<<<< HEAD
     background: 0 0;
     outline: 0;
     resize: none;
@@ -130,20 +226,38 @@ input {
 a,
 a:hover {
     text-decoration: none
+=======
+    background: none;
+    outline: none;
+    resize: none;
+    border: 0;
+    font-family: 'Montserrat', sans-serif;
+    border: 2px solid #bebed2;
+    transition: all .3s;
+}
+
+a, a:hover {
+    text-decoration: none;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 }
 
 .errorMSg {
     color: red;
+<<<<<<< HEAD
     font-weight: bolder
 }
 
 footer,
 footer ul li a:hover {
     color: #fff
+=======
+    font-weight: bolder;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 }
 
 form br {
     display: block;
+<<<<<<< HEAD
     margin: 2px 0
 }
 
@@ -163,6 +277,31 @@ form div.bottom {
 form input,
 form select {
     font-weight: 800
+=======
+    margin: 2px 0;
+}
+
+.ng-show {
+    animation: 0.5s myChange;
+}
+
+form select, form div.section {
+    margin-bottom: 1rem;
+}
+
+
+form div.bottom {
+    margin-bottom: 0.7rem;
+}
+
+form label, .header, div p {
+    font-family: 'Montserrat', sans-serif;
+}
+
+form input, form select {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 }
 
 form:before {
@@ -172,6 +311,7 @@ form:before {
     left: 0;
     right: 0;
     height: 8px;
+<<<<<<< HEAD
     border-radius: 2px
 }
 
@@ -194,11 +334,37 @@ footer ul li {
     display: inline-block
 }
 
+=======
+    border-radius: 2px;
+}
+
+h2 {
+    font-family: 'Varela Round', sans-serif;
+}
+
+footer {
+    background: #2d2b2a;
+    color: #fff;
+    padding: 2rem 0;
+    text-align: center;
+    font-size: .8rem;
+    color: rgba(255, 255, 255, 0.4);
+}
+footer ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+footer ul li {
+    display: inline-block;
+}
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 footer ul li a {
     display: block;
     padding: .4rem .7rem;
     font-size: .9rem;
     text-decoration: none;
+<<<<<<< HEAD
     color: rgba(255, 255, 255, .7)
 }
 
@@ -210,6 +376,24 @@ footer ul li a {
     font-size: 22px;
     border-bottom: 3px solid #a7adba;
     font-weight: 600;
+=======
+    color: rgba(255, 255, 255, 0.7);
+}
+footer ul li a:hover {
+    color: white;
+}
+
+.form h2  {
+    margin: 18px 0;
+    padding-bottom: 10px;
+    width: 210px;
+    color: royalblue;
+    font-size: 22px;
+    border-bottom: 3px solid #a7adba;
+    font-weight: 600;
+    margin-bottom: 30px;
+    font-family: 'Cinzel', serif;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 }
 
 .form p:before {
@@ -219,17 +403,27 @@ footer ul li a {
     font-size: 13px;
     color: #5a5a5a;
     float: left;
+<<<<<<< HEAD
     width: 40%
+=======
+    width: 40%;
+    transition: all .3s;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 }
 
 button {
     padding: 8px 12px;
     margin: 8px 0 0;
+<<<<<<< HEAD
     font-family: 'Encode Sans Expanded', sans-serif;
+=======
+    font-family: 'Montserrat', sans-serif;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
     border: 2px solid #78788c;
     background: 0;
     color: #5a5a6e;
     cursor: pointer;
+<<<<<<< HEAD
     font-size: 4rem;
     width: 130px;
     height: 60px
@@ -258,3 +452,45 @@ button {
         width: 85%
     }
 }
+=======
+    transition: all .3s;
+    font-size: 4rem;
+    width: 110px;
+    height: 60px
+}
+
+/* --- Media Queries --- */
+
+@media only screen and (min-width: 1000px) {
+
+    .form {
+        width: 70%;
+    }
+
+    form div.per {
+        width: 45%;
+    }
+
+}
+
+@media only screen and (min-width: 451px) and (max-width: 999px) {
+
+    form div.per {
+        width: 60%;
+    }
+
+}
+
+@media only screen and (max-width: 450px) {
+
+    .form {
+        width: 99%;
+    }
+
+    form div.per {
+        width: 85%;
+    }
+
+}
+
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924

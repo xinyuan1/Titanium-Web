@@ -9,8 +9,12 @@ var routes = require('./routes/index');
 var success =require('./routes/success');//添加的路由器
 var mcc = require('./routes/mcc');
 var count=require('./routes/count');
+<<<<<<< HEAD
 var effectiverate=require('./routes/effectiverate');
 var chart=require('./routes/chart');
+=======
+
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 
 
 
@@ -34,8 +38,12 @@ app.use('/', routes);
 app.use ('/success', success);
 app.use('/mcc', mcc);
 app.use('/count',count);
+<<<<<<< HEAD
 app.use('effectiverate', effectiverate);
 app.use('/chart', chart);
+=======
+
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 
 
 
@@ -57,5 +65,8 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 module.exports = app;

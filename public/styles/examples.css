@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @import url(https://fonts.googleapis.com/css?family=Montserrat);
 
 .legend {
@@ -11,6 +12,8 @@
     opacity:0.8;
 }
 
+=======
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 /*  left nav */
 .z-depth-2 {
     box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19); }
@@ -35,10 +38,18 @@ body {
     }
 }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 @media only screen and (max-width: 961px) {
     main {
         padding-left: 0px;
     }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 }
 
 #viz_container {
@@ -52,7 +63,11 @@ body {
 div.container {
     width:100%;
     position:absolute;
+<<<<<<< HEAD
     top: 1.5rem;
+=======
+    top:100px;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 }
 
 .tile {

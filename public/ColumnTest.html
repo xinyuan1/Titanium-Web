@@ -26,7 +26,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
     <script>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
         //Once the document is ready we set javascript and page settings
         var screenWidth;
         var screenHeight;
@@ -42,10 +45,15 @@
             }
 
             //Set display size based on window size.
+<<<<<<< HEAD
             console.log(`Width ${rect.width}`);
 
             screenWidth = (rect.width < 960) ? Math.round(rect.width*.92) : Math.round((rect.width - 210) *.92);
             screenHeight = $(window).height()*0.95+2;
+=======
+            screenWidth = (rect.width < 960) ? Math.round(rect.width*.95) : Math.round((rect.width - 210) *.95);
+            screenHeight = 500;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 
             d3.select("#currentDisplay")
                     .attr("item_value", (String(screenWidth) + "," + String(screenHeight)))

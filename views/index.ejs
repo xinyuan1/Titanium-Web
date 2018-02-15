@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -20,7 +23,11 @@
     <div class="row">
       <div class="col-sm-6 col-lg-4">
         <p>
+<<<<<<< HEAD
           <img src="https://raw.githubusercontent.com/NBALAJI95/Titanium-Web-Project/master/ClearCost01.png" alt="Lights"
+=======
+          <img src="https://github.com/NBALAJI95/Titanium-Web-Project/blob/master/image.png?raw=true" alt="Lights"
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
                style="width:100%">
         <div class="caption">
           <center>
@@ -50,7 +57,11 @@
       <div class="form-group">
         <strong> <label for="name"> Full Name </label> </strong>
         <div class="relative">
+<<<<<<< HEAD
           <input class="form-control" id="name" type="text"
+=======
+          <input class="form-control" id="name" name="fullName" type="text"
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
                  title="Type your name here. Format: 'First-name Last-name'" autocomplete="off"
                  placeholder="eg. John Smith" name="fullName" ng-model="fullName" required>
           <i class="fa fa-user"></i>
@@ -62,8 +73,13 @@
       <div class="form-group">
         <strong> <label for="email"> Email address </label> </strong>
         <div class="relative">
+<<<<<<< HEAD
           <input id="email" class="form-control" type="email" placeholder="eg. abc@mail.com" name="email"
                  pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,3}$" ng-model="eMail" required>
+=======
+          <input id="email" name="email" class="form-control" type="email" placeholder="eg. abc@mail.com" name="email"
+                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" ng-model="eMail" required>
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
           <i class="fa fa-envelope"></i>
         </div>
       </div>
@@ -85,7 +101,11 @@
       <div class="form-group">
         <strong> <label for="company"> Company Name </label> </strong>
         <div class="relative">
+<<<<<<< HEAD
           <input id="company" name="companyName"  class="form-control" type="text" title="Type your Company name here"
+=======
+          <input id="company" name="companyName" class="form-control" type="text" title="Type your Company name here"
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
                  placeholder="eg. Pied Piper" ng-model="companyName" required>
           <i class="fa fa-building"></i>
         </div>
@@ -107,22 +127,38 @@
       <div class="form-group">
         <strong> <label for="zip"> Zip code </label> </strong>
         <div class="relative">
+<<<<<<< HEAD
           <input id="zip" name="zipCode"  class="form-control" type='number' ng-model='zipcode'
+=======
+          <input id="zip" name="zipCode" class="form-control" type='number' ng-model='zipcode'
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
                  name="myInput" placeholder='eg. 60625' max="99999" required />
           <i class="fa fa-map-pin"></i>
         </div>
       </div>
     </div>
+<<<<<<< HEAD
     <h2> Business Info. </h2>
     <div class="section">
       <strong> <label for="Select1"> What type of business do you have? </label> </strong>
       <select class="form-control custom-select" ng-model="sel_attr" ng-options="attr for attr in mccCategories"
+=======
+
+    <h2> Business Info. </h2>
+    <div class="section">
+      <strong> <label for="Select1"> What type of business do you have? </label> </strong>
+      <select class="form-control" ng-model="sel_attr" ng-options="attr for attr in mccCategories"
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
               value="{{attr}}" ng-change="Category()" id="Select1" name="businessType">
       </select>
 
       <strong> <label for="mcc"> MCC Code </label> </strong>
 
+<<<<<<< HEAD
       <select class="form-control custom-select" name="Mcc" id="mcc" ng-model="mccCodes" ng-required="mccCodes == ''
+=======
+      <select class="form-control" name="Mcc" id="mcc" ng-model="mccCodes" ng-required="mccCodes == ''
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
             || mccCodes == undefined">
         <option></option>
         <option ng:repeat="mccCode in mccList" value="{{mccCode}}">
@@ -139,7 +175,11 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="custom-control custom-checkbox">
+<<<<<<< HEAD
             <input type="checkbox" class="custom-control-input" id="retail" name="retail"
+=======
+            <input type="checkbox" class="custom-control-input" id="retail"
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
                    ng-model="retail" ng-change="toggle()" ng-required="!(retail || commerce || moto
                                || other)">
             <label class="custom-control-label" for="retail"> Retail / Swiped </label>
@@ -158,7 +198,11 @@
 
         <div class="col-sm-6">
           <div class="custom-control custom-checkbox">
+<<<<<<< HEAD
             <input type="checkbox" class="custom-control-input" id="commerce" name="commerce"
+=======
+            <input type="checkbox" class="custom-control-input" id="commerce"
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
                    ng-model="commerce" ng-change="toggle()"
                    ng-required="!(retail || commerce || moto || other)">
             <label class="custom-control-label" for="commerce"> e-commerce </label>
@@ -178,7 +222,11 @@
       <div class="row">
         <div class="col-sm-6">
           <div class="custom-control custom-checkbox">
+<<<<<<< HEAD
             <input type="checkbox" class="custom-control-input" id="moto" name="moto" ng-model="moto"
+=======
+            <input type="checkbox" class="custom-control-input" id="moto"  ng-model="moto"
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
                    ng-change="toggle()" ng-required="!(retail || commerce || moto || other)">
             <label class="custom-control-label" for="moto"> Phone order / Keyed </label>
             <!-- Previously called Moto -->
@@ -196,7 +244,11 @@
 
         <div class="col-sm-6">
           <div class="custom-control custom-checkbox">
+<<<<<<< HEAD
             <input type="checkbox" class="custom-control-input" id="other" name="other" ng-model="other"
+=======
+            <input type="checkbox" class="custom-control-input" id="other" ng-model="other"
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
                    ng-change="toggle()" ng-required="!(retail || commerce || moto || other)">
             <label class="custom-control-label" for="other"> Other </label>
           </div>
@@ -275,8 +327,13 @@
       <label for="avgTicket"> Average Ticket </label>
 
       <div class="relative input-group bottom">
+<<<<<<< HEAD
         <input type="number" class="form-control currency" step="any" min="0" name="avgTicket" ng-model="avgTicket"
                id="avgTicket" placeholder="$" ng-required="!(tranXns != undefined || avgTicket != undefined)"
+=======
+        <input type="number" class="form-control currency" min="0" name="avgTicket" ng-model="avgTicket"
+               id="avgTicket" name="avgTicket" placeholder="$" ng-required="!(tranXns != undefined || avgTicket != undefined)"
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
                ng-change="divisionOp2()">
         <i class="fa fa-money"></i>
       </div>
@@ -302,7 +359,11 @@
               ng-disabled="(retailV + ecomerceV + motoV + otherV) != 100 || (totalFee == '' || totalFee == undefined)
             || (totalV == '' || totalV == undefined) || !(avgTicket + tranXns > 0)">
         <i class="fa fa-fw fa-paper-plane"></i>
+<<<<<<< HEAD
         Calculate
+=======
+        Save !
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
       </button>
 
     </div>
@@ -337,16 +398,26 @@
         $(this).scrollTop(0);
     });
 
+<<<<<<< HEAD
 
 
 </script>
 
 <script src="js/bootstrap-formhelpers-phone.js"></script>
 <script src="js/angular.min.js"></script>
+=======
+</script>
+
+<script src="js/bootstrap-formhelpers-phone.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.js"></script>
 <script src="js/angularjsMain.js" type="text/javascript" rel="script"></script>
 <script src="js/inputRestrict.js" type="text/javascript" rel="script"></script>
 
 </body>
 </html>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924

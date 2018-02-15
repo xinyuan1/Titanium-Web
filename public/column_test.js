@@ -45,16 +45,33 @@
 
 // **Starting off**, we do a little bit of house cleaning and set up the test container page with some global variables.
 // Once that is done we load the data via D3 and call our initialize routine.
+<<<<<<< HEAD
 var viz, viz_container, viz_title, data, theme, screenWidth, screenHeight;
 
 const loadData = () => {
     //Here we grab our data via the <code>d3.json</code> utility.
     d3.json("http://localhost:3000/effectiverate", function (json) {
+=======
+var viz, viz_container, viz_title, data, theme, screenWidth;
+
+const loadData = () => {
+    //Here we grab our data via the <code>d3.json</code> utility.
+    d3.json("https://api.jsonbin.io/b/5a7dfa4b2cc12d126d71cd84", function (json) {
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
         data = json;
         initialize();
     });
 };
 
+<<<<<<< HEAD
+=======
+var svg = d3.select("svg");
+svg.append("text")      // text label for the x axis
+    .attr("x", 265 )
+    .attr("y",  240 )
+    .style("text-anchor", "middle")
+    .text("Date");
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 
 //** Creating your first bar chart **
 
@@ -63,7 +80,11 @@ const loadData = () => {
 //
 //In this routine we create our bar chart, set various properties, create a title and
 //update the display.
+<<<<<<< HEAD
 //console.log($(window).height());
+=======
+//
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 const initialize = () => {
 
     //Here we set our <code>viz</code> variable by instantiating the <code>vizuly.viz.bar</code> function.
@@ -75,6 +96,7 @@ const initialize = () => {
     //Both the <code>x</code> and <code>y</code> properties are used to map the data values
     //to the corresponding x and y axis within the chart.
 
+<<<<<<< HEAD
 
     viz.data(data)
         .width(screenWidth).height($(window).height()*.80+2)     //initial component display size
@@ -83,6 +105,17 @@ const initialize = () => {
         .x(function (d, i)
         { return d.effective_rate.toString(); })          //property for y axis plot
         .padding(0.3)                       //spacing between bars
+=======
+    
+    
+    viz.data(data)
+        .width(screenWidth).height(500)     //initial component display size
+        .y(function (d, i)
+            { return d.count; })    //property for x axis plot
+        .x(function (d, i)
+            { return d.effective_rate.toString(); })          //property for y axis plot
+        .padding(0.15)                       //spacing between bars
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
         .on("update", onUpdate)              //fires every time viz is updated
         .on("zoom", zoom)                    //handles zoom event
         .on("mouseover", onMouseOver)        //handles mouse over event
@@ -93,7 +126,11 @@ const initialize = () => {
     //to the look and feel of any component.   Here we choose a theme and skin to use for our bar chart.
     // *See this <a href=''>guide</a> for understanding the details of themes and skins.*
 
+<<<<<<< HEAD
     console.log(`Screen height ${screenHeight}`);
+=======
+
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
     theme = vizuly.theme.column_bar(viz)
         .skin(vizuly.skin.COLUMNBAR_MATERIALBLUE);
 
@@ -106,16 +143,27 @@ const initialize = () => {
         .append("text")
         .attr("class", "title")
         .attr("x", viz.width() / 2)
+<<<<<<< HEAD
         .attr("y", 20).attr("text-anchor", "middle")
         .style("fill", "#FFF")
         .style("font-weight",300);
+=======
+        .attr("y", 40).attr("text-anchor", "middle")
+        .style("fill", "#FFF")
+        .style("font-weight",300)
+        .text("Company Name vs Others");
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 
     var x_label = viz.selection()
         .select("svg")
         .append("text")
         .attr("class", "title")
         .attr("x", viz.width() / 2)
+<<<<<<< HEAD
         .attr("y", viz.height()-1).attr("text-anchor", "middle")
+=======
+        .attr("y", viz.height()-3).attr("text-anchor", "middle")
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
         .style("fill", "#FFF")
         .style("font-weight",200)
         .style({"font-size":"15px"})
@@ -127,11 +175,16 @@ const initialize = () => {
         .attr("transform", "rotate(-90)")
         .attr("class", "title")
         .attr("y", 4)
+<<<<<<< HEAD
         .attr("x", (viz.height()/1.4)*-1)
+=======
+        .attr("x", (viz.height()/1.7)*-1)
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
         .attr("dy", "1em")
         .style("fill", "#FFF")
         .style("font-weight",200)
         .style({"font-size":"15px"})
+<<<<<<< HEAD
         .text("NUMBER OF COMPANIES");
 
     var svg = d3.select("svg");
@@ -182,6 +235,10 @@ const initialize = () => {
 
     d3.select(".legend").style("border", "2px solid");
 
+=======
+        .text("NUMBER OF COMPANIES")
+        ;
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
 
     //The <code>viz.update()</code> function tells the component to render itself to the display.
     //Any property changes that have occurred since the last update (including changes to the data) will now be rendered.
@@ -234,8 +291,19 @@ const onMouseOver = (bar, d, i) => {
 //dynamically via javascript or statically within your HTML.
 const datatipHtml =
     `<div style='text-align:left;'>
+<<<<<<< HEAD
    <b> Effective rate = </b>
    <span class='datatip-value'></span>
+=======
+   <b> Count &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;</b>
+   <span class='datatip-label'>
+   </span>
+   <br/>
+   <b> Effective &nbsp;</b>
+   <span class='datatip-value'></span>
+   <br/>
+   <b> rate </b>
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
  </div>`;
 
 
@@ -265,12 +333,33 @@ const setDataTip = (name, datum, index, x, y) => {
         })
         .style("color", function (d, i) {
             return (index == i) ? theme.skin().color : 'white';
+<<<<<<< HEAD
         })
         .html(function (d, i) {
             return parseFloat(viz.data()[0][getSeriesIndex(datum)].effective_rate.toString())+"%";
         });
 
 
+=======
+                    })
+        .html(function (d, i) {
+            return parseFloat(viz.data()[0][getSeriesIndex(datum)].effective_rate.toString());
+        });
+
+    //Now we show what type of medal (bronze, silver, gold) in the <code>'.datatip-label' span</code>.
+    tip.selectAll(".datatip-label")
+        .style("font-weight", function (d, i) {
+            return (index == i) ? 400 : 200;
+        })
+        .style("color", function (d, i) {
+            return (index == i) ? theme.skin().color : 'white';
+        })
+        .html(function (d, i) {
+            return viz.data()[0][getSeriesIndex(datum)].count;
+        });
+
+    
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
     //We add a little logic to position the datatip at the right end of the bar element.
     x = x - tip[0][0].getBoundingClientRect().width / 2;
     y = y - tip[0][0].getBoundingClientRect().height;
@@ -389,4 +478,8 @@ function onUpdate() {
 //
 //  or any combination of fixed and relative margins.
 //
+<<<<<<< HEAD
 //
+=======
+//
+>>>>>>> 553429b811076578c12ea2aca6c15ea336974924
